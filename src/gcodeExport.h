@@ -31,6 +31,7 @@ private:
     char extruderCharacter[MAX_EXTRUDERS];
     int currentSpeed, retractionSpeed;
     int zPos;
+    int zOffset;
     bool isRetracted;
     int extruderNr;
     int currentFanSpeed;
@@ -50,6 +51,9 @@ public:
     void replaceTagInStart(const char* tag, const char* replaceValue);
     
     void setExtruderOffset(int id, Point p);
+
+    void setZOffset(int zOffset);
+
     void setSwitchExtruderCode(std::string preSwitchExtruderCode, std::string postSwitchExtruderCode);
     
     void setFlavor(int flavor);
