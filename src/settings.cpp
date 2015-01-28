@@ -44,6 +44,7 @@ ConfigSettings::ConfigSettings()
     SETTING(infillOverlap, 15);
     SETTING(infillSpeed, 50);
     SETTING(infillPattern, INFILL_AUTOMATIC);
+    SETTING(skinSpeed, 50);
 
     SETTING(supportType, SUPPORT_TYPE_GRID);
     SETTING(supportAngle, -1);
@@ -61,7 +62,7 @@ ConfigSettings::ConfigSettings()
     SETTING(minimalExtrusionBeforeRetraction, 100);
     SETTING(retractionZHop, 0);
 
-    SETTING(enableCombing, 1);
+    SETTING(enableCombing, COMBING_ALL);
     SETTING(enableOozeShield, 0);
     SETTING(wipeTowerSize, 0);
     SETTING(multiVolumeOverlap, 0);

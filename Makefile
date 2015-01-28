@@ -53,6 +53,9 @@ else
 			LDFLAGS += --static -flto
 		endif
 	endif
+	ifeq ($(UNAME), OpenBSD)
+		LDFLAGS += -lm -lpthread
+	endif
 	ifeq ($(UNAME), Darwin)
 		OPEN_HTML=open
 		#For MacOS force to build
@@ -80,7 +83,7 @@ test: $(EXECUTABLE)
 
 ## clean stuff
 clean:
-	rm -f $(EXECUTABLE) $(OBJECTS)
+	rm -f $(EXECUTABLE) $(OBJECTS) $(BUILD_DIR)/libclipper.a
 
 help:
 	@cat Makefile |grep \#\#| grep \: |cut -d\# -f3
