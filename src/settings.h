@@ -168,7 +168,6 @@ public:
     int infillSpeed;
     int infillPattern;
     int skinSpeed;
-    int perimeterBeforeInfill;
 
     //Support material
     int supportType;
