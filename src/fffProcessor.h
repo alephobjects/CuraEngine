@@ -616,7 +616,7 @@ private:
                         generateAutomaticInfill(
                             part->sparseOutline, infillPolygons, extrusionWidth,
                             config.sparseInfillLineDistance,
-                            config.infillOverlap, fillAngle);
+                            config.infillOverlap, fillAngle, layer->printZ);
                         break;
 
                     case INFILL_GRID:
