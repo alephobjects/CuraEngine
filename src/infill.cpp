@@ -1,5 +1,6 @@
 /** Copyright (C) 2013 David Braam - Released under terms of the AGPLv3 License */
 #include "infill.h"
+#include <algorithm>
 
 namespace cura {
 
@@ -40,14 +41,6 @@ void generateGridInfill(const Polygons& in_outline, Polygons& result,
                        infillOverlap, rotation);
     generateLineInfill(in_outline, result, extrusionWidth, lineSpacing * 2,
                        infillOverlap, rotation + 90);
-}
-
-int compare_int64_t(const void* a, const void* b)
-{
-    int64_t n = (*(int64_t*)a) - (*(int64_t*)b);
-    if (n < 0) return -1;
-    if (n > 0) return 1;
-    return 0;
 }
 
 void generateLineInfill(const Polygons& in_outline, Polygons& result, int extrusionWidth, int lineSpacing, int infillOverlap, double rotation)
@@ -91,7 +84,7 @@ void generateLineInfill(const Polygons& in_outline, Polygons& result, int extrus
     int idx = 0;
     for(int64_t x = boundary.min.X + lineSpacing / 2; x < boundary.max.X; x += lineSpacing)
     {
-        qsort(cutList[idx].data(), cutList[idx].size(), sizeof(int64_t), compare_int64_t);
+        std::sort(cutList[idx].begin(), cutList[idx].end());
         for(unsigned int i = 0; i + 1 < cutList[idx].size(); i+=2)
         {
             if (cutList[idx][i+1] - cutList[idx][i] < extrusionWidth / 5)
